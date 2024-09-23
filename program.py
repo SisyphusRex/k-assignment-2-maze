@@ -29,18 +29,27 @@ def main(*args):
         ["#", ".", ".", ".", ".", ".", ".", "#", ".", ".", ".", "#"],
         ["#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#"],
     ]
-
+    # practice maze
+    mazeP = [
+        ["#", "#", "#", "#", "#"],
+        ["#", ".", ".", ".", "#"],
+        ["#", ".", "#", ".", "#"],
+        ["#", "#", ".", ".", "#"],
+        ["#", "#", ".", "#", "#"],
+    ]
     # Create new instance of a MazeSolver
     maze_solver = MazeSolver()
 
     # Create the second maze by transposing the first maze
     maze2 = transpose_maze(maze1)
 
+    # Solve the practice maze
+    maze_solver.solve_maze(mazeP, X_START, Y_START)
     # Solve the original maze
-    maze_solver.solve_maze(maze1, X_START, Y_START)
+    # maze_solver.solve_maze(maze1, X_START, Y_START)
 
     # Solve the transposed maze
-    maze_solver.solve_maze(maze2, X_START, Y_START)
+    # maze_solver.solve_maze(maze2, X_START, Y_START)
 
 
 def transpose_maze(maze_to_transpose):
@@ -72,12 +81,8 @@ def transpose_maze(maze_to_transpose):
     # add number of rows in new maze equal to numer of columns in old maze
     for row in range(new_row_count):
         transposed_maze.append([])
+    # append elements from original maze to reverse coordinates
     for row in range(original_row_count):
         for column in range(original_column_count):
             transposed_maze[column].append(maze_to_transpose[row][column])
-
-    # for row in transposed_maze:
-    #     print(*row)
-    # print("\uff2f")
-    MazePrinter().print_maze(transposed_maze)
     return transposed_maze
