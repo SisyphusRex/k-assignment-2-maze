@@ -1,7 +1,7 @@
 # Assignment 2 - Recursion to solve a maze
 
 ## Author
-
+Walter Podewil
 
 
 ## Description
@@ -55,7 +55,7 @@ Don't forget that you must have a base case for your recursive method or you wil
 | **Total**                 | **100**|
 
 ## Outside Resources Used
-
+colors.py: David Barnes
 
 
 ## Known Problems, Issues, And/Or Errors in the Program

@@ -2,6 +2,7 @@
 
 # First-party imports
 from maze_solver import MazeSolver
+from maze_printer import MazePrinter
 
 
 def main(*args):
@@ -64,4 +65,19 @@ def transpose_maze(maze_to_transpose):
     original to the new transposed one. Failure to do so may lead you to only
     be able to solve the transposed one.
     """
-    return []
+    transposed_maze = []
+    original_row_count = len(maze_to_transpose)
+    original_column_count = len(maze_to_transpose[0])
+    new_row_count = original_column_count
+    # add number of rows in new maze equal to numer of columns in old maze
+    for row in range(new_row_count):
+        transposed_maze.append([])
+    for row in range(original_row_count):
+        for column in range(original_column_count):
+            transposed_maze[column].append(maze_to_transpose[row][column])
+
+    # for row in transposed_maze:
+    #     print(*row)
+    # print("\uff2f")
+    MazePrinter().print_maze(transposed_maze)
+    return transposed_maze

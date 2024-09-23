@@ -1,5 +1,16 @@
 """Maze Solver Module"""
 
+# Walter Podewil
+# CIS 226
+# September 23, 2024
+
+# System Imports
+
+# First Party Imports
+from maze_printer import MazePrinter
+
+# Third Party Imports
+
 
 class MazeSolver:
     """This class is used for solving a 2d list maze.

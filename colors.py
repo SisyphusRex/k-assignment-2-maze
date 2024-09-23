@@ -7,7 +7,9 @@
 # System imports
 import os
 
-os.system("")  # Required to get the terminal to ALWAYS show colors instead of raw escape codes.
+os.system(
+    ""
+)  # Required to get the terminal to ALWAYS show colors instead of raw escape codes.
 
 
 # Decorator to convert Style class to a Singleton
@@ -40,36 +42,36 @@ class Style:
         return value
 
 
-def print_success(message):
+def print_success(message, my_end="\n"):
     """Print success message"""
     Style.GREEN  # pylint:disable=W0104
-    print(message)
+    print(message, end=my_end)
     Style.RESET  # pylint:disable=W0104
 
 
-def print_warning(message):
+def print_warning(message, my_end="\n"):
     """Print warning message"""
     Style.YELLOW  # pylint:disable=W0104
-    print(message)
+    print(message, end=my_end)
     Style.RESET  # pylint:disable=W0104
 
 
-def print_error(message):
+def print_error(message, my_end="\n"):
     """Print error message"""
     Style.RED  # pylint:disable=W0104
-    print(message)
+    print(message, end=my_end)
     Style.RESET  # pylint:disable=W0104
 
 
-def print_primary(message):
+def print_primary(message, my_end="\n"):
     """Print primary message"""
     Style.BLUE  # pylint:disable=W0104
-    print(message)
+    print(message, end=my_end)
     Style.RESET  # pylint:disable=W0104
 
 
-def print_info(message):
+def print_info(message, my_end="\n"):
     """Print info message"""
     Style.CYAN  # pylint:disable=W0104
-    print(message)
+    print(message, end=my_end)
     Style.RESET  # pylint:disable=W0104
