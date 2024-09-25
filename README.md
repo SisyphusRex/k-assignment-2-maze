@@ -55,9 +55,9 @@ Don't forget that you must have a base case for your recursive method or you wil
 | **Total**                 | **100**|
 
 ## Outside Resources Used
-colors.py: David Barnes
-
+colors.py: David Barnes; prints different colors to terminal.
+symbl.cc : Unicode characters; not used in final version.
 
 ## Known Problems, Issues, And/Or Errors in the Program
-
+None as of 09/25/2024 @ 7:45pm.
 

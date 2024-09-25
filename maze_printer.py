@@ -1,15 +1,15 @@
+"""Class to Print Maze"""
+
 # Walter Podewil
 # CIS 226
 # September 23, 2024
 
-"""Class to Print Maze"""
 
 # System Imports
 
 # First Party Imports
 from colors import (
     print_error,
-    print_info,
     print_success,
     print_warning,
 )
