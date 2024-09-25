@@ -20,8 +20,8 @@ from colors import (
 class MazePrinter:
     """This class is used to print out the maze"""
 
-    my_x = "\uff38"
-    my_o = "\uff2f"
+    # my_x = "\uff38"
+    # my_o = "\uff2f"
 
     def print_maze(self, maze: list):
         """Prints Maze with Color"""
@@ -32,8 +32,9 @@ class MazePrinter:
                         print("#", end="")
                     case ".":
                         print_warning(".", "")
-                    case self.my_x:
-                        print_success(self.my_x, "")
-                    case self.my_o:
-                        print_error(self.my_o, "")
+                    case "X":
+                        print_success("X", "")
+                    case "O":
+                        print_error("O", "")
             print()
+        print()

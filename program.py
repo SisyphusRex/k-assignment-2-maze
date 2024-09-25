@@ -44,12 +44,12 @@ def main(*args):
     maze2 = transpose_maze(maze1)
 
     # Solve the practice maze
-    maze_solver.solve_maze(mazeP, X_START, Y_START)
+    # maze_solver.solve_maze(mazeP, X_START, Y_START)
     # Solve the original maze
-    # maze_solver.solve_maze(maze1, X_START, Y_START)
+    maze_solver.solve_maze(maze1, X_START, Y_START)
 
     # Solve the transposed maze
-    # maze_solver.solve_maze(maze2, X_START, Y_START)
+    maze_solver.solve_maze(maze2, X_START, Y_START)
 
 
 def transpose_maze(maze_to_transpose):
