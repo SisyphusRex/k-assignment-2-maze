@@ -69,7 +69,8 @@ class MazeSolver:
                 # Movement
                 case ".":
                     maze[current_y][current_x] = "X"
-                    self.my_printer.print_maze(maze)
+                    if self.solving:
+                        self.my_printer.print_maze(maze)
                     # move down
                     self.__maze_traversal(maze, current_x, current_y + 1)
                     # move right
@@ -78,7 +79,7 @@ class MazeSolver:
                     self.__maze_traversal(maze, current_x - 1, current_y)
                     # move up
                     self.__maze_traversal(maze, current_x, current_y - 1)
-                    if self.solving == True:
+                    if self.solving:
                         maze[current_y][current_x] = "O"
                         self.my_printer.print_maze(maze)
                 # If the solver lands on an X, go back
