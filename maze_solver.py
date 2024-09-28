@@ -72,13 +72,17 @@ class MazeSolver:
                     if self.solving:
                         self.my_printer.print_maze(maze)
                     # move down
-                    self.__maze_traversal(maze, current_x, current_y + 1)
+                    if self.solving:
+                        self.__maze_traversal(maze, current_x, current_y + 1)
                     # move right
-                    self.__maze_traversal(maze, current_x + 1, current_y)
+                    if self.solving:
+                        self.__maze_traversal(maze, current_x + 1, current_y)
                     # move left
-                    self.__maze_traversal(maze, current_x - 1, current_y)
+                    if self.solving:
+                        self.__maze_traversal(maze, current_x - 1, current_y)
                     # move up
-                    self.__maze_traversal(maze, current_x, current_y - 1)
+                    if self.solving:
+                        self.__maze_traversal(maze, current_x, current_y - 1)
                     if self.solving:
                         maze[current_y][current_x] = "O"
                         self.my_printer.print_maze(maze)
