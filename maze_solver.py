@@ -29,18 +29,23 @@ class MazeSolver:
         # variables here that you are able to access and set anywhere during
         # recursion. This is why the init constructor is defined here for you.
 
-        # this attribute saves the exit of the map
-        self.exit: tuple = (None, None)
         # this attribute keeps track of whether the maze is solved or not
         self.solving: bool = True
+
+        # this attribute saves the bottom row index and
+        self.bounds = {}
 
     def solve_maze(self, maze, x_start, y_start):
         """This is the public method that will allow someone to use this class to solve the maze.
         Feel free to change the return type, or add more parameters if you like.
         But, it can be done exactly as it is here without adding anything other
         than code in the body."""
-        self.exit = self.__establish_exit(maze)
+
+        self.bounds = self.__establish_bounds(maze)
+
         self.__maze_traversal(maze, x_start, y_start)
+
+        # I must reset the bool here to reuse the maze_solver instance later
         self.solving = True
 
     def __maze_traversal(self, maze, current_x, current_y):
@@ -53,13 +58,6 @@ class MazeSolver:
         More than likely you will need to pass in at a minimum the current position
         in X and Y maze coordinates. EX: _maze_traversal(current_x, current_y)"""
 
-        if self.exit == (current_y, current_x):
-            maze[current_y][current_x] = "X"
-            self.my_printer.print_maze(maze)
-            print("Solved.")
-            self.solving = False
-            return
-
         try:
             match maze[current_y][current_x]:
                 # First Base Case.
@@ -71,6 +69,15 @@ class MazeSolver:
                     maze[current_y][current_x] = "X"
                     if self.solving:
                         self.my_printer.print_maze(maze)
+
+                    # base case.  if solver is on edge of maze, it returns
+                    if current_y in (self.bounds["top"], self.bounds["bottom"]):
+                        self.solving = False
+                        return
+                    if current_x in (self.bounds["left"], self.bounds["right"]):
+                        self.solving = False
+                        return
+
                     # move down
                     if self.solving:
                         self.__maze_traversal(maze, current_x, current_y + 1)
@@ -95,20 +102,12 @@ class MazeSolver:
         except IndexError:
             print("Out of range.")
 
-    def __establish_exit(self, maze: list) -> tuple:
-        """This method finds the the exit and returns the row and column"""
+    # this method establishes the bounds of the maze and stores them in a dict
+    def __establish_bounds(self, maze: list) -> dict:
         rows = len(maze)
         columns = len(maze[0])
-        # check top and bottom of maze for exit
-        for column in range(columns):
-            if maze[0][column] == ".":
-                return 0, column
-            if maze[rows - 1][column] == ".":
-                return rows - 1, column
-        # check left and right for exit
-        for row in range(rows):
-            if maze[row][0] == ".":
-                return row, 0
-            if maze[row][columns - 1] == ".":
-                return row, columns - 1
-        return None, None
+        left = 0
+        right = columns - 1
+        top = 0
+        bottom = rows - 1
+        return {"left": left, "right": right, "top": top, "bottom": bottom}
