@@ -102,8 +102,8 @@ class MazeSolver:
         except IndexError:
             print("Out of range.")
 
-    # this method establishes the bounds of the maze and stores them in a dict
     def __establish_bounds(self, maze: list) -> dict:
+        """This method establishes the maze bounds"""
         rows = len(maze)
         columns = len(maze[0])
         left = 0
