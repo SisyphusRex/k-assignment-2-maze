@@ -1,8 +1,6 @@
 """Maze Solver Module"""
 
-# Walter Podewil
-# CIS 226
-# September 23, 2024
+
 
 # System Imports
 
