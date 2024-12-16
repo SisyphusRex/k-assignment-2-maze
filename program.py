@@ -43,8 +43,12 @@ def main(*args):
         ["#", "#", ".", "#", "#"],
     ]
 
+    challenge_maze = read_maze("input_maze.txt")
+    x_coord, y_coord = get_start_point(challenge_maze)
+
     # Create new instance of a MazeSolver
     maze_solver = MazeSolver()
+
 
     # Create the second maze by transposing the first maze
     maze2 = transpose_maze(maze1)
@@ -53,10 +57,12 @@ def main(*args):
     # maze_solver.solve_maze(mazeP, X_START, Y_START)
 
     # Solve the original maze
-    maze_solver.solve_maze(maze1, X_START, Y_START)
+    #maze_solver.solve_maze(maze1, X_START, Y_START)
 
     # Solve the transposed maze
-    maze_solver.solve_maze(maze2, X_START, Y_START)
+    #maze_solver.solve_maze(maze2, X_START, Y_START)
+
+    maze_solver.solve_maze(challenge_maze, x_coord, y_coord)
 
 
 def transpose_maze(maze_to_transpose):
@@ -93,3 +99,20 @@ def transpose_maze(maze_to_transpose):
         for column in range(original_column_count):
             transposed_maze[column].append(maze_to_transpose[row][column])
     return transposed_maze
+
+def read_maze(filename):
+    """Reads a maze from a text file and returns it as a list of lists."""
+    maze = []
+    with open(filename, "r") as f:
+        for line in f:
+            maze.append(list(line.strip()))
+    return maze
+
+
+def get_start_point(maze):
+    """find start coords"""
+    for y_index, row_list in enumerate(maze):
+        for x_index, char in enumerate(row_list):
+            if char == "^":
+                char = "."
+                return (x_index, y_index)
