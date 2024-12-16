@@ -1,7 +1,6 @@
 # Assignment 2 - Recursion to solve a maze
 
 ## Author
-Walter Podewil
 
 
 ## Description
